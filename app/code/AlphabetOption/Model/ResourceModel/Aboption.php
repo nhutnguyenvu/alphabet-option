@@ -26,7 +26,7 @@ class Aboption extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $select = $this->getConnection()->select();
         $select->from($eavAttributeTable)->where("frontend_input IN (?)",['select','multiselect']);
         $select->where("entity_type_id = (?)",self::PRODUCT_ENTITY_ID);
-        $select->where("attribute_id NOT IN (?)", $this->getExceptAttributeLoading());
+        $select->where("attribute_id IN (?)", $this->getAttributeLoading());
         $select->reset(\Zend_Db_Select::COLUMNS)->columns("attribute_id");
         return $this->getConnection()->fetchCol($select);
     }
@@ -64,8 +64,8 @@ class Aboption extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         }
         return $this->helper;
     }
-    protected function getExceptAttributeLoading(){
-        return $this->getHelper()->getExceptAttributeLoading();
+    protected function getAttributeLoading(){
+        return $this->getHelper()->getAttributeLoading();
     }
 
     public function loadAllSelectAndMultiSelectAttributesInfo(){

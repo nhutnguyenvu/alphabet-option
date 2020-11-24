@@ -10,7 +10,7 @@ class Data extends BcoreData
 {
     protected $logFile = "var/log/alphabetoption.log";
     const ENABLED = "enabled";
-    const EXCEPT_ATTRIBUTES = "except_attributes";
+    const ATTRIBUTES = "attributes";
 
     public function writeLog($message)
     {
@@ -22,8 +22,8 @@ class Data extends BcoreData
     public function isEnabled(){
         return $this->getConfigValue($this->createGeneralConfigurationPath(self::ENABLED));
     }
-    public function getExceptAttributeLoading(){
-        $exceptAttributes = $this->getConfigValue($this->createGeneralConfigurationPath(self::EXCEPT_ATTRIBUTES));
+    public function getAttributeLoading(){
+        $exceptAttributes = $this->getConfigValue($this->createGeneralConfigurationPath(self::ATTRIBUTES));
         $exceptAttributes = explode(",",$exceptAttributes);
         if(!empty($exceptAttributes)){
             return array_map("trim",$exceptAttributes);

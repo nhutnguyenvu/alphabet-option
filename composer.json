@@ -1,0 +1,12 @@
+{
+    "name": "nhutnguyenvu/alphabet-option-testing",
+    "description": "test",
+    "type": "project",
+    "require" : {
+        "php" : ">=7.4",
+        "ext-mbstring": "*"
+    },
+    "license": [
+        "proprietary"
+    ]
+}
